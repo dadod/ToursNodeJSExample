@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tourSummary_1 = require("./tourSummary");
 const reviews_1 = require("./reviews");
 class TourDetail extends tourSummary_1.TourSummary {
-    constructor(tourData, reviewData) {
-        super(tourData);
-        this.tourCategory = tourData.tourCategory;
-        this.tourDescription = tourData.tourDescription;
-        this.price = tourData.price;
-        this.currency = tourData.currency;
-        this.reviews = reviewData.map((item) => new reviews_1.Reviews(item));
+    constructor(data, tourImages) {
+        super(data);
+        this.tourCategory = data.tour_category;
+        this.tourDescription = data.tour_description || "";
+        this.price = data.price;
+        this.currency = data.currency;
+        this.img = tourImages;
+        this.reviews = data.reviews.map((item) => new reviews_1.Reviews(item));
     }
 }
 exports.TourDetail = TourDetail;
